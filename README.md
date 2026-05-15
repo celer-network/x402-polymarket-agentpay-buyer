@@ -53,6 +53,17 @@ curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agent
 export BUYER_KEY="<64_HEX_PRIVATE_KEY_NO_0x>"
 ```
 
+### Recommended: Use A Private Base RPC
+
+By default `RPC_URL` points at the public `https://mainnet.base.org` endpoint, which is rate-limited and flaky under load — preflight balance checks and channel ops will intermittently fail. For reliable runs, swap it for your own Base mainnet RPC from a provider like [Alchemy](https://www.alchemy.com/) or [NodeReal](https://nodereal.io/):
+
+```bash
+# In /tmp/buyer-agentpay.env
+export RPC_URL="https://base-mainnet.g.alchemy.com/v2/<YOUR_API_KEY>"
+# or
+export RPC_URL="https://base-mainnet.nodereal.io/v1/<YOUR_API_KEY>"
+```
+
 ## Run
 
 ```bash
