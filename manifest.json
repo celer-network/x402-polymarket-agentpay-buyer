@@ -1,0 +1,22 @@
+{
+  "name": "x402-polymarket-buyer-agentpay",
+  "description": "Minimal buyer-side AgentPay bundle for Codex and Claude Code agents.",
+  "version": "0.1.0",
+  "defaultSellerHost": "35.83.247.203",
+  "network": "eip155:8453",
+  "requiredFiles": [
+    "AGENTS.md or CLAUDE.md skill wiring",
+    "skills/codex-buyer-agentpay/SKILL.md",
+    "skills/claude-buyer-agentpay/SKILL.md",
+    "skills/codex-buyer-agentpay/templates/buyer.env.template",
+    "skills/codex-buyer-agentpay/templates/AGENTS.md.example",
+    "skills/codex-buyer-agentpay/scripts/preflight.sh",
+    "skills/codex-buyer-agentpay/scripts/run-paid-checks.sh",
+    "skills/codex-buyer-agentpay/scripts/run-export-checks.sh",
+    "skills/codex-buyer-agentpay/scripts/run-withdraw.sh",
+    "skills/codex-buyer-agentpay/bin/node",
+    "skills/codex-buyer-agentpay/bin/x402-client",
+    "deploy/gen-buyer-profile.sh"
+  ],
+  "publicInstallCommand": "curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main/install.sh | bash -s -- --codex"
+}

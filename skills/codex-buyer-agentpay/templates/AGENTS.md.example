@@ -1,0 +1,39 @@
+# AGENTS.md
+
+## Buyer AgentPay Skill
+
+When asked to run the buyer payment flow, test paid APIs, or validate export endpoints:
+
+### Setup
+
+1. Source the env file:
+   ```
+   source /tmp/buyer-agentpay.env
+   ```
+
+2. Generate buyer profile if it doesn't exist:
+   ```
+   [ -f "$BUYER_PROFILE" ] || SELLER_HOST=$SELLER_HOST OUT=$BUYER_PROFILE bash deploy/gen-buyer-profile.sh
+   ```
+
+### Execution
+
+Run in order. Stop on failure and report remediation.
+
+1. Preflight: `bash skills/codex-buyer-agentpay/scripts/preflight.sh`
+2. Paid checks: `bash skills/codex-buyer-agentpay/scripts/run-paid-checks.sh`
+3. Export checks: `bash skills/codex-buyer-agentpay/scripts/run-export-checks.sh`
+
+### Output
+
+Return a JSON summary:
+1. Preflight status (connectivity, workloads discovered)
+2. Paid flow results (pass/fail per endpoint)
+3. Export route results (pass/fail per route)
+4. Remediation list for any failures
+
+### Security
+
+- Never print BUYER_KEY
+- Use only testnet keys
+- Treat BUYER_DATA_DIR as sensitive
