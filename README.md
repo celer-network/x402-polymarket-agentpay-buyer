@@ -47,41 +47,31 @@ curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agent
 
 ## Configure Buyer Credentials
 
-```bash
-cp skills/codex-buyer-agentpay/templates/buyer.env.template /tmp/buyer-agentpay.env
-```
-
-Edit `/tmp/buyer-agentpay.env` and set:
+`install.sh` already created `/tmp/buyer-agentpay.env` from the template. Edit it and set:
 
 ```bash
 export BUYER_KEY="<64_HEX_PRIVATE_KEY_NO_0x>"
 ```
 
-Then generate the buyer profile:
-
-```bash
-source /tmp/buyer-agentpay.env
-SELLER_HOST=$SELLER_HOST OUT=$BUYER_PROFILE bash deploy/gen-buyer-profile.sh
-```
-
-## Verify
-
-```bash
-source /tmp/buyer-agentpay.env
-bash skills/codex-buyer-agentpay/scripts/preflight.sh
-```
-
-After preflight passes, ask your agent to run the Polymarket data buyer flow. Paid calls spend USDC from the buyer channel.
-
-## Optional Dashboard
-
-Launch the local buyer dashboard:
+## Run
 
 ```bash
 bash start-dashboard.sh
 ```
 
-The dashboard opens at `http://localhost:9100`, shows setup status, and can run the bundled buyer agent flow without the full service repository.
+Then open `http://localhost:9100`. The dashboard generates the buyer profile, runs preflight, and lets you exercise the paid agent flow — no extra commands needed. Paid calls spend USDC from the buyer channel.
+
+## Advanced: CLI Only
+
+If you don't want the dashboard, run the same steps manually:
+
+```bash
+source /tmp/buyer-agentpay.env
+bash deploy/gen-buyer-profile.sh
+bash skills/codex-buyer-agentpay/scripts/preflight.sh
+```
+
+Then ask your Codex / Claude Code agent to run the Polymarket data buyer flow.
 
 ## Security
 

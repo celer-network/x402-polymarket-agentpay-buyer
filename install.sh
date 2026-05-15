@@ -147,12 +147,14 @@ fi
 cat <<'NEXT'
 
 Next:
-  1. Edit /tmp/buyer-agentpay.env and set BUYER_KEY.
-  2. Run:
-       source /tmp/buyer-agentpay.env
-       SELLER_HOST=$SELLER_HOST OUT=$BUYER_PROFILE bash deploy/gen-buyer-profile.sh
-       bash skills/codex-buyer-agentpay/scripts/preflight.sh
-  3. Ask your Codex or Claude Code agent to run the Polymarket data buyer flow.
-  4. Optional dashboard:
+  1. Edit /tmp/buyer-agentpay.env and set BUYER_KEY (64 hex chars, no 0x).
+  2. Launch the dashboard — it generates the buyer profile and runs preflight for you:
        bash start-dashboard.sh
+     Then open http://localhost:9100
+  3. Ask your Codex or Claude Code agent to run the Polymarket data buyer flow.
+
+  Advanced (CLI only, no dashboard):
+       source /tmp/buyer-agentpay.env
+       bash deploy/gen-buyer-profile.sh
+       bash skills/codex-buyer-agentpay/scripts/preflight.sh
 NEXT
