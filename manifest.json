@@ -16,7 +16,9 @@
     "skills/codex-buyer-agentpay/scripts/run-withdraw.sh",
     "skills/codex-buyer-agentpay/bin/node",
     "skills/codex-buyer-agentpay/bin/x402-client",
-    "deploy/gen-buyer-profile.sh"
+    "skills/codex-buyer-agentpay/bin/status-bridge",
+    "deploy/gen-buyer-profile.sh",
+    "start-dashboard.sh"
   ],
   "publicInstallCommand": "curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main/install.sh | bash -s -- --codex"
 }

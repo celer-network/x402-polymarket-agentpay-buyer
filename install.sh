@@ -87,7 +87,9 @@ fetch "skills/codex-buyer-agentpay/scripts/run-export-checks.sh" "skills/codex-b
 fetch "skills/codex-buyer-agentpay/scripts/run-withdraw.sh" "skills/codex-buyer-agentpay/scripts/run-withdraw.sh"
 fetch "skills/codex-buyer-agentpay/bin/node" "skills/codex-buyer-agentpay/bin/node"
 fetch "skills/codex-buyer-agentpay/bin/x402-client" "skills/codex-buyer-agentpay/bin/x402-client"
+fetch "skills/codex-buyer-agentpay/bin/status-bridge" "skills/codex-buyer-agentpay/bin/status-bridge"
 fetch "deploy/gen-buyer-profile.sh" "deploy/gen-buyer-profile.sh"
+fetch "start-dashboard.sh" "start-dashboard.sh"
 
 chmod +x \
   "skills/codex-buyer-agentpay/scripts/preflight.sh" \
@@ -96,7 +98,9 @@ chmod +x \
   "skills/codex-buyer-agentpay/scripts/run-withdraw.sh" \
   "skills/codex-buyer-agentpay/bin/node" \
   "skills/codex-buyer-agentpay/bin/x402-client" \
-  "deploy/gen-buyer-profile.sh"
+  "skills/codex-buyer-agentpay/bin/status-bridge" \
+  "deploy/gen-buyer-profile.sh" \
+  "start-dashboard.sh"
 
 if [ "$INSTALL_CODEX" = "1" ]; then
   if [ -f "AGENTS.md" ]; then
@@ -149,4 +153,6 @@ Next:
        SELLER_HOST=$SELLER_HOST OUT=$BUYER_PROFILE bash deploy/gen-buyer-profile.sh
        bash skills/codex-buyer-agentpay/scripts/preflight.sh
   3. Ask your Codex or Claude Code agent to run the Polymarket data buyer flow.
+  4. Optional dashboard:
+       bash start-dashboard.sh
 NEXT

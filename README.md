@@ -21,6 +21,9 @@ This is the minimal user-side bundle for giving a Codex or Claude Code agent pai
 - Runtime binaries:
   - `skills/codex-buyer-agentpay/bin/node`
   - `skills/codex-buyer-agentpay/bin/x402-client`
+  - `skills/codex-buyer-agentpay/bin/status-bridge`
+- Local dashboard launcher:
+  - `start-dashboard.sh`
 
 ## Install Into A User Project
 
@@ -69,6 +72,16 @@ bash skills/codex-buyer-agentpay/scripts/preflight.sh
 ```
 
 After preflight passes, ask your agent to run the Polymarket data buyer flow. Paid calls spend USDC from the buyer channel.
+
+## Optional Dashboard
+
+Launch the local buyer dashboard:
+
+```bash
+bash start-dashboard.sh
+```
+
+The dashboard opens at `http://localhost:9100`, shows setup status, and can run the bundled buyer agent flow without the full service repository.
 
 ## Security
 
