@@ -59,7 +59,7 @@ fetch() {
   local src="$1"
   local dst="$2"
   mkdir -p "$(dirname "$dst")"
-  curl --fail --location --silent --show-error --retry 3 --retry-delay 1 "$BASE_URL/$src" -o "$dst"
+  curl --fail --location --silent --show-error --retry 3 --retry-delay 1 --retry-all-errors "$BASE_URL/$src" -o "$dst"
 }
 
 append_if_missing() {
