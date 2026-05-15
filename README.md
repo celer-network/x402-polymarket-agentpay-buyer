@@ -27,19 +27,19 @@ This is the minimal user-side bundle for giving a Codex or Claude Code agent pai
 Codex:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main/install.sh | bash -s -- --codex
+curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main/install.sh | bash -s -- --codex
 ```
 
 Claude Code:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main/install.sh | bash -s -- --claude
+curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main/install.sh | bash -s -- --claude
 ```
 
 Both:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main/install.sh | bash -s -- --codex --claude
+curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main/install.sh | bash -s -- --codex --claude
 ```
 
 ## Configure Buyer Credentials

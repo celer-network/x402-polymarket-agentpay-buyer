@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BASE_URL="${BASE_URL:-https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main}"
+BASE_URL="${BASE_URL:-https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main}"
 INSTALL_CODEX=0
 INSTALL_CLAUDE=0
 TARGET_DIR="."
@@ -14,8 +14,8 @@ Usage:
   install.sh [--codex] [--claude] [--target DIR]
 
 Examples:
-  curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main/install.sh | bash -s -- --codex
-  curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main/install.sh | bash -s -- --claude --target my-agent-project
+  curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main/install.sh | bash -s -- --codex
+  curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main/install.sh | bash -s -- --claude --target my-agent-project
 
 Environment:
   BASE_URL  Override download base URL for mirrors or tests.

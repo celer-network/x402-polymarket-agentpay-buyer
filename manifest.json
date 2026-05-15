@@ -18,5 +18,5 @@
     "skills/codex-buyer-agentpay/bin/x402-client",
     "deploy/gen-buyer-profile.sh"
   ],
-  "publicInstallCommand": "curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/main/install.sh | bash -s -- --codex"
+  "publicInstallCommand": "curl -fsSL https://raw.githubusercontent.com/celer-network/x402-polymarket-agentpay-buyer/refs/heads/main/install.sh | bash -s -- --codex"
 }
