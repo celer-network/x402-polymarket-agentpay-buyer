@@ -73,6 +73,38 @@ bash start-dashboard.sh
 
 Then open `http://localhost:9100`. The dashboard generates the buyer profile, runs preflight, and exposes a **RUN AGENT** button.
 
+### Where the dashboard page comes from
+
+The public buyer bundle does not store a standalone `dashboard.html` file. The local page is compiled into the bundled `skills/codex-buyer-agentpay/bin/status-bridge` binary from the service repository:
+
+```go
+// x402-polymarket-data/cmd/status-bridge/main.go
+//go:embed dashboard.html
+```
+
+`start-dashboard.sh` launches that binary and opens `http://localhost:9100`; the binary serves the embedded page from `/`.
+
+### Syncing dashboard changes into this bundle
+
+When `x402-polymarket-data/cmd/status-bridge/dashboard.html`, `cmd/status-bridge/main.go`, or `cmd/x402-client` changes, rebuild the runtime binaries from `x402-polymarket-data` and copy them into this public bundle before publishing:
+
+```bash
+DATA_REPO=/path/to/x402-polymarket-data
+BUYER_REPO=/path/to/x402-polymarket-agentpay-buyer
+
+cd "$DATA_REPO"
+go test ./...
+go build -o "$BUYER_REPO/skills/codex-buyer-agentpay/bin/status-bridge" ./cmd/status-bridge/
+go build -o "$BUYER_REPO/skills/codex-buyer-agentpay/bin/x402-client" ./cmd/x402-client/
+chmod +x "$BUYER_REPO/skills/codex-buyer-agentpay/bin/status-bridge" \
+  "$BUYER_REPO/skills/codex-buyer-agentpay/bin/x402-client"
+
+cd "$BUYER_REPO"
+git status --short
+```
+
+Commit the updated binaries together with any bundle docs, scripts, or env template changes. This is what makes dashboard UI fixes available to users who install via `install.sh`.
+
 ### How RUN AGENT works
 
 Clicking RUN AGENT forks your local LLM CLI — `codex` if present, otherwise `claude` — and prompts it to invoke `skills/codex-buyer-agentpay/scripts/run-batch-export.sh`. The wrapper runs `x402-client` in batch-export mode; paid x402 calls stream through your AgentPay channel and events feed the Payment Flow / Response panels live.
