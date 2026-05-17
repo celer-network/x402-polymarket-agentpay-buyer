@@ -14,6 +14,7 @@
     "skills/codex-buyer-agentpay/scripts/run-paid-checks.sh",
     "skills/codex-buyer-agentpay/scripts/run-export-checks.sh",
     "skills/codex-buyer-agentpay/scripts/run-withdraw.sh",
+    "skills/codex-buyer-agentpay/scripts/run-batch-export.sh",
     "skills/codex-buyer-agentpay/bin/node",
     "skills/codex-buyer-agentpay/bin/x402-client",
     "skills/codex-buyer-agentpay/bin/status-bridge",

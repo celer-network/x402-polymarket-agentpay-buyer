@@ -17,6 +17,7 @@ This is the minimal user-side bundle for giving a Codex or Claude Code agent pai
   - `skills/codex-buyer-agentpay/scripts/run-paid-checks.sh`
   - `skills/codex-buyer-agentpay/scripts/run-export-checks.sh`
   - `skills/codex-buyer-agentpay/scripts/run-withdraw.sh`
+  - `skills/codex-buyer-agentpay/scripts/run-batch-export.sh` (driven by the dashboard's LLM-based RUN AGENT)
   - `deploy/gen-buyer-profile.sh`
 - Runtime binaries:
   - `skills/codex-buyer-agentpay/bin/node`
@@ -70,7 +71,20 @@ export RPC_URL="https://base-mainnet.nodereal.io/v1/<YOUR_API_KEY>"
 bash start-dashboard.sh
 ```
 
-Then open `http://localhost:9100`. The dashboard generates the buyer profile, runs preflight, and lets you exercise the paid agent flow — no extra commands needed. Paid calls spend USDC from the buyer channel.
+Then open `http://localhost:9100`. The dashboard generates the buyer profile, runs preflight, and exposes a **RUN AGENT** button.
+
+### How RUN AGENT works
+
+Clicking RUN AGENT forks your local LLM CLI — `codex` if present, otherwise `claude` — and prompts it to invoke `skills/codex-buyer-agentpay/scripts/run-batch-export.sh`. The wrapper runs `x402-client` in batch-export mode; paid x402 calls stream through your AgentPay channel and events feed the Payment Flow / Response panels live.
+
+Requirements for the LLM path (recommended):
+
+- One of `codex` (`brew install codex` or vendor install) or `claude` (`npm i -g @anthropic-ai/claude-code`) on `PATH`.
+- That CLI must be signed in (`codex login` or `claude auth login`).
+
+The dashboard's "Agent Setup → LLM CLI signed in" row reflects this. If no CLI is available, RUN AGENT falls back to a direct `x402-client` fork so the demo still works, but the LLM-driven framing is lost.
+
+Paid calls spend USDC from the buyer channel.
 
 ## Advanced: CLI Only
 

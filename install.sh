@@ -85,6 +85,7 @@ fetch "skills/codex-buyer-agentpay/scripts/preflight.sh" "skills/codex-buyer-age
 fetch "skills/codex-buyer-agentpay/scripts/run-paid-checks.sh" "skills/codex-buyer-agentpay/scripts/run-paid-checks.sh"
 fetch "skills/codex-buyer-agentpay/scripts/run-export-checks.sh" "skills/codex-buyer-agentpay/scripts/run-export-checks.sh"
 fetch "skills/codex-buyer-agentpay/scripts/run-withdraw.sh" "skills/codex-buyer-agentpay/scripts/run-withdraw.sh"
+fetch "skills/codex-buyer-agentpay/scripts/run-batch-export.sh" "skills/codex-buyer-agentpay/scripts/run-batch-export.sh"
 fetch "skills/codex-buyer-agentpay/bin/node" "skills/codex-buyer-agentpay/bin/node"
 fetch "skills/codex-buyer-agentpay/bin/x402-client" "skills/codex-buyer-agentpay/bin/x402-client"
 fetch "skills/codex-buyer-agentpay/bin/status-bridge" "skills/codex-buyer-agentpay/bin/status-bridge"
@@ -96,6 +97,7 @@ chmod +x \
   "skills/codex-buyer-agentpay/scripts/run-paid-checks.sh" \
   "skills/codex-buyer-agentpay/scripts/run-export-checks.sh" \
   "skills/codex-buyer-agentpay/scripts/run-withdraw.sh" \
+  "skills/codex-buyer-agentpay/scripts/run-batch-export.sh" \
   "skills/codex-buyer-agentpay/bin/node" \
   "skills/codex-buyer-agentpay/bin/x402-client" \
   "skills/codex-buyer-agentpay/bin/status-bridge" \
